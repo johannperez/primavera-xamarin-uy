@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>{574F00B8-3EDD-4303-B29A-70675A8CDBD1}</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>MonkeysSDK</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)MonkeysSDK.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Monkey.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
+  </ItemGroup>
+</Project>
