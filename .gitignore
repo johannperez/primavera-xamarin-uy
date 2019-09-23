@@ -1,3 +1,6 @@
+androidoutput/**
+iosoutput/**
+
 # globs
 Makefile.in
 *.userprefs

@@ -25,6 +25,14 @@
     <MtouchFastDev>true</MtouchFastDev>
     <IOSDebuggerPort>23591</IOSDebuggerPort>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
+    <CustomCommands>
+      <CustomCommands>
+        <Command>
+          <type>AfterBuild</type>
+          <command>../packages/Embeddinator-4000.0.4.0/tools/objcgen ${TargetPath} --target=framework --platform=iOS --outdir=${SolutionDir}/iosoutput/ -c --nativeexception</command>
+        </Command>
+      </CustomCommands>
+    </CustomCommands>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
