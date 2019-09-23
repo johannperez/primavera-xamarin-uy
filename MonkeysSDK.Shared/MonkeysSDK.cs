@@ -8,31 +8,94 @@ using Newtonsoft.Json.Serialization;
 
 namespace MonkeysSDK
 {
-    public static class MonkeysSDK
+    public class MonkeysSDK
     {
-        public static async Task<string> GetRandomMonkey()
+        #region sync methods
+
+        public string GetRandomMonkey()
         {
+            try
+            {
+                String randomMonkey = String.Empty;
+
+                Task.Run(async () =>
+                {
+                    randomMonkey = await GetRandomMonkeyAsync();
+                }).Wait() ;
+
+                return randomMonkey;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+        }
+
+        public Monkey[] GetMonkeyDevs()
+        {
+            try
+            {
+                Monkey[] monkeys = null;
+
+                Task.Run(async () =>
+                {
+                    monkeys = await GetMonkeyDevsAsnyc();
+                }).Wait();
+
+                return monkeys;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+        }
+
+        public MonkeyIterator GetMonkeyIterator()
+        {
+            return new MonkeyIterator(GetMonkeyDevs());
+        }
+
+        #endregion
+
+        #region async
+
+        //These methods won't be generated on the Native library. Embeddinator does not understand Task
+
+        private async Task<string> GetRandomMonkeyAsync()
+        {
+            Console.WriteLine("**********2!");
             return (await ListMonkeys()).FirstOrDefault().Name; //I know... not very efficient
         }
 
-        public static async Task<Monkey[]> GetMonkeyDevs()
+        private async Task<Monkey[]> GetMonkeyDevsAsnyc()
         {
-            return await ListMonkeys(); //I know... not very efficient
-
+            return await ListMonkeys();
         }
 
-        private static async Task<Monkey[]> ListMonkeys()
+        #endregion
+
+
+        #region private methods
+        private async Task<Monkey[]> ListMonkeys()
         {
+            Console.WriteLine("**********1!");
+
             using (var client = new HttpClient())
             {
-                var response = await client.GetAsync(Constants.XAMARIN_UY_ENDPOINT);
+                client.BaseAddress = new Uri(Constants.MEETUP_API);
+
+                var response = await client.GetAsync(Constants.XAMARIN_UY_MEMBERS_ENDPOINT);
                 Stream stream = await response.Content.ReadAsStreamAsync();
                 var sr = new StreamReader(stream);
+                Console.WriteLine("**********1!");
+
                 return DeserializeJsonFromsStream<Monkey[]>(stream);
             }
         }
 
-        private static T DeserializeJsonFromsStream<T>(Stream stream)
+        private T DeserializeJsonFromsStream<T>(Stream stream)
         {
             var sr = new StreamReader(stream);
             var jtr = new JsonTextReader(sr);
@@ -40,5 +103,6 @@ namespace MonkeysSDK
             var result = js.Deserialize<T>(jtr);
             return result;
         }
+        #endregion
     }
 }

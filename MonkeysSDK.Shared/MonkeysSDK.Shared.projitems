@@ -12,5 +12,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)MonkeysSDK.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Monkey.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Constants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MonkeyIterator.cs" />
   </ItemGroup>
 </Project>
