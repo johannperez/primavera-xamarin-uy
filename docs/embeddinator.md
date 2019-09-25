@@ -1,15 +1,16 @@
 ---
 marp: true
 footer: 'Embeddinator - Primavera Xamarin - Johann Pérez'
+size: 4:3
 ---
+<!-- footer: '' -->
 
-# Embeddinator 
-## From Xamarin libraries to Java & Objective-C libraries
+![bg fit](charla-johann-1.png)
 
 ---
 
 # About me 
-# 💻 📱 💼 📈 👫 😼 ⚽ 🤓 ![imago w:40](./imago.png)️
+# 💻 📱 💼 📈 👫 😼 ⚽ 🤓 👨🏻‍🚒 🚒 ![imago w:40](./imago.png)️
 
 ---
 
@@ -162,16 +163,16 @@ class Something extends AsyncTask<Void, Void, String>{
 ---
 
 ```objective-c
-dispatch_queue_t queue = dispatch_get_global_queueDISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(queue, ^{
+dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
 
-        MonkeysSDK* sdk = [[MonkeysSDK alloc] init];
-        NSString* monkey = [sdk getRandomMonkey]
+dispatch_async(queue, ^{
 
-        dispatch_async(dispatch_get_main_queue(), ^{
-            ... 
-        });
+    MonkeysSDK* sdk = [[MonkeysSDK alloc] init];
+    NSString* monkey = [sdk getRandomMonkey]
+
+    dispatch_async(dispatch_get_main_queue(), ^{    
     });
+});
 
 ```
 
@@ -194,10 +195,11 @@ You can have callbacks. but it is tricky
 
 # iOS - Awful useful hack
 
-## CFBundleSupportedPlatforms
+## CFBundleSupportedPlatforms
 
 ```
-sed -i '.bak' 's/&lt;string&gt;iPhoneSimulator&lt;\\/string&gt;//g' 
+sed -i '.bak' 
+    's/&lt;string&gt;iPhoneSimulator&lt;\\/string&gt;//g' 
     ${SolutionDir}/iosoutput/FastAuthSDK.iOS.Library.framework/Info.plist
 ```
 

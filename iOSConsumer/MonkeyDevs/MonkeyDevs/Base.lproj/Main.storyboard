@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +10,72 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DMU-Qd-c1k">
+                                <rect key="frame" x="116.5" y="702" width="181" height="30"/>
+                                <state key="normal" title="Get Random Monkey Sync"/>
+                                <connections>
+                                    <action selector="getRandomMonkeySync:" destination="BYZ-38-t0r" eventType="touchUpInside" id="59W-i6-VA0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="phb-Hp-19d">
+                                <rect key="frame" x="173.5" y="822" width="67" height="30"/>
+                                <state key="normal" title="Boom! (?)"/>
+                                <connections>
+                                    <action selector="boom:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KpL-bs-y37"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Pf-34-sBz">
+                                <rect key="frame" x="162" y="782" width="90" height="30"/>
+                                <state key="normal" title="Get Monkeys"/>
+                                <connections>
+                                    <action selector="getMonkeys:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dkg-AT-iQC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yJV-sb-n2H">
+                                <rect key="frame" x="112.5" y="742" width="189" height="30"/>
+                                <state key="normal" title="Get Random Monkey Async"/>
+                                <connections>
+                                    <action selector="getRandomMonkeyAsync:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nWa-DT-bCT"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="30" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMF-On-xyK">
+                                <rect key="frame" x="0.0" y="84" width="414" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="9Pf-34-sBz" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Bnm-lc-U6K"/>
+                            <constraint firstItem="sMF-On-xyK" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" id="Qnb-Sg-Kk6"/>
+                            <constraint firstItem="yJV-sb-n2H" firstAttribute="top" secondItem="DMU-Qd-c1k" secondAttribute="bottom" constant="10" id="SV7-6h-srK"/>
+                            <constraint firstItem="sMF-On-xyK" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="UHA-Y9-87J"/>
+                            <constraint firstItem="phb-Hp-19d" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Xar-X2-A0D"/>
+                            <constraint firstItem="yJV-sb-n2H" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ahq-m8-irZ"/>
+                            <constraint firstItem="sMF-On-xyK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="fa4-30-Zwn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="phb-Hp-19d" secondAttribute="bottom" constant="10" id="mk4-kh-SVH"/>
+                            <constraint firstItem="9Pf-34-sBz" firstAttribute="top" secondItem="yJV-sb-n2H" secondAttribute="bottom" constant="10" id="rBH-wc-i79"/>
+                            <constraint firstItem="phb-Hp-19d" firstAttribute="top" secondItem="9Pf-34-sBz" secondAttribute="bottom" constant="10" id="wok-aK-pik"/>
+                            <constraint firstItem="DMU-Qd-c1k" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="xnP-fm-GYq"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="getMonkeysUIButton" destination="9Pf-34-sBz" id="r0D-G3-3wo"/>
+                        <outlet property="getRandomMonkeyAsyncUIButton" destination="yJV-sb-n2H" id="dDN-YZ-3zm"/>
+                        <outlet property="getRandomMonkeySyncUIButton" destination="DMU-Qd-c1k" id="YQp-Og-yW4"/>
+                        <outlet property="resultsUILabel" destination="sMF-On-xyK" id="3ub-ZI-Oel"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="95.758928571428569"/>
         </scene>
     </scenes>
 </document>

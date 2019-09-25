@@ -11,6 +11,10 @@
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *resultsUILabel;
+@property (weak, nonatomic) IBOutlet UIButton *getRandomMonkeySyncUIButton;
+@property (weak, nonatomic) IBOutlet UIButton *getRandomMonkeyAsyncUIButton;
+@property (weak, nonatomic) IBOutlet UIButton *getMonkeysUIButton;
 
 @end
 
