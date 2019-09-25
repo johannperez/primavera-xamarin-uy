@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
             while(monkeys.getNext() != null)
             {
-                monkeysString += ", " + monkeys.getCurrent().getName();
+                monkeysString += "  🐵" + monkeys.getCurrent().getName();
             }
 
             return  monkeysString;
