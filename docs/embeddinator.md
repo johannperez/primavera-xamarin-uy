@@ -228,8 +228,8 @@ sed -i '.bak' 's/&lt;string&gt;iPhoneSimulator&lt;\\/string&gt;//g'
 
 # Aknowledgements
 
- - Majo Rabaza
  - Alex Llanes
+ - Majo Rabaza
 
 ---
 
@@ -244,3 +244,4 @@ sed -i '.bak' 's/&lt;string&gt;iPhoneSimulator&lt;\\/string&gt;//g'
  - https://github.com/mono/Embeddinator-4000
  - https://github.com/jsuarezruiz/Embeddinator-4000-Sample
  - https://github.com/java-decompiler/jd-gui
+ - https://github.com/johannperez/primavera-xamarin-uy
