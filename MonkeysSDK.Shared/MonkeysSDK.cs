@@ -78,12 +78,9 @@ namespace MonkeysSDK
 
         #endregion
 
-
         #region private methods
         private async Task<Monkey[]> ListMonkeys()
         {
-            Console.WriteLine("**********1!");
-
             using (var client = new HttpClient())
             {
                 client.BaseAddress = new Uri(Constants.MEETUP_API);
@@ -91,8 +88,6 @@ namespace MonkeysSDK
                 var response = await client.GetAsync(Constants.XAMARIN_UY_MEMBERS_ENDPOINT);
                 Stream stream = await response.Content.ReadAsStreamAsync();
                 var sr = new StreamReader(stream);
-                Console.WriteLine("**********1!");
-
                 return DeserializeJsonFromsStream<Monkey[]>(stream);
             }
         }
