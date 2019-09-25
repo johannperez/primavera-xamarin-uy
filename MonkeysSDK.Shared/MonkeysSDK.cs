@@ -52,9 +52,9 @@ namespace MonkeysSDK
             }
         }
 
-        public MonkeyIterator GetMonkeyIterator()
+        public void MonkeyBomb()
         {
-            return new MonkeyIterator(GetMonkeyDevs());
+            throw new Exception("Boom!");
         }
 
         #endregion
@@ -62,11 +62,13 @@ namespace MonkeysSDK
         #region async
 
         //These methods won't be generated on the Native library. Embeddinator does not understand Task
-
         private async Task<string> GetRandomMonkeyAsync()
         {
-            Console.WriteLine("**********2!");
-            return (await ListMonkeys()).FirstOrDefault().Name; //I know... not very efficient
+            //I know... not very efficient
+
+            var monkeys = await ListMonkeys();
+            int randomIndex = new Random(DateTime.Now.Millisecond).Next(monkeys.Count());
+            return monkeys[randomIndex].Name; 
         }
 
         private async Task<Monkey[]> GetMonkeyDevsAsnyc()

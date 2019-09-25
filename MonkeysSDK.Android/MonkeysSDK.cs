@@ -3,41 +3,46 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Android.Runtime;
+using Java.Interop;
 using Newtonsoft.Json;
+using Core = MonkeysSDK;
 
-//namespace MonkeysSDK
-//{
-//    public static class MonkeysSDK
-//    {
-//        public static async Task<string> GetRandomMonkey()
-//        {
-//            return (await ListMonkeys()).FirstOrDefault().Name; //I know... not very efficient
-//        } 
+namespace MonkeysSDK.Droid
+{
+    [Register("monkeyssdk.droid.MonkeysSDK")]
+    public class MonkeysSDK : Java.Lang.Object
+    {
+        public MonkeysSDK(IntPtr handle, JniHandleOwnership transfer) : base(handle, transfer)
+        {
+        }
 
-//        public static async Task<Monkey[]> GetMonkeyDevs()
-//        {
-//            return await ListMonkeys(); 
+        public MonkeysSDK() : base()
+        { }
 
-//        }
+        [Export("getRandomMonkey")]
+        public string GetRandomMonkey()
+        {
+            return new Core.MonkeysSDK().GetRandomMonkey();
+        }
 
-//        private static async Task<Monkey[]> ListMonkeys()
-//        {
-//            using (var client = new HttpClient())
-//            {
-//                var response = await client.GetAsync(Constants.XAMARIN_UY_ENDPOINT);
-//                Stream stream = await response.Content.ReadAsStreamAsync();
-//                var sr = new StreamReader(stream);
-//                return DeserializeJsonFromsStream<Monkey[]>(stream);
-//            }
-//        }
+        [Export("getMonkeyDevs")]
+        public Monkey[] GetMonkeyDevs()
+        {
+            return new Core.MonkeysSDK().GetMonkeyDevs().Select(m => new Monkey(m)).ToArray();
+        }
 
-//        private static T DeserializeJsonFromsStream<T>(Stream stream)
-//        {
-//            var sr = new StreamReader(stream);
-//            var jtr = new JsonTextReader(sr);
-//            var js = new JsonSerializer();
-//            var result = js.Deserialize<T>(jtr);
-//            return result;
-//        }
-//    }
-//}
+        [Export("getMonkeyIterator")]
+        public MonkeyIterator GetMonkeyIterator()
+        {
+            return new MonkeyIterator(new Core.MonkeysSDK().GetMonkeyDevs());
+
+        }
+
+        [Export("fireMonkeyBomb")]
+        public void MonkeyBomb()
+        {
+            new Core.MonkeysSDK().MonkeyBomb();
+        }
+    }
+}

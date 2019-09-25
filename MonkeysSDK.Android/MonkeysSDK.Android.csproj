@@ -54,6 +54,8 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MonkeysSDK.cs" />
+    <Compile Include="Monkey.cs" />
+    <Compile Include="MonkeyIterator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
